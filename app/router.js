@@ -5,6 +5,8 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+	this.resource('games', function () {
+	});
 });
 
 export default Router;

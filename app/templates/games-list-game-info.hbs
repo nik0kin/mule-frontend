@@ -1,0 +1,26 @@
+<div class="border">
+	<table cellSpacing=2 border=2>
+		<tr>
+			<td> name: {{name}} </td>
+			<td> ID: {{_id}} </td>
+		</tr>
+		<tr>
+			<td> Round: history.roundNumber </td>
+			<td> 
+				RuleBundle GameSettings: <br>
+				{{jsonToString ruleBundleGameSettings}}
+    		</td>
+		</tr>
+		<tr>
+			<td>TurnProgressStyle: {{turnProgressStyle}} </td>
+			<td>
+				TurnTimeLimit: {{turnTimeLimit}}<br>
+				NextTurnTime: {{nextTurnTime}}
+			</td>
+		</tr>
+		<tr>
+			playerList
+		</tr>
+	</table>
+</div>
+<br>
