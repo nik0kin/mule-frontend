@@ -1,11 +1,13 @@
 <div class="border row">
         <div class="col-md-8 border">
-        	<h2 id='title'>Welcome to Mule-Frontend</h2><
+        	<h2 id='title'>Welcome to Mule-Frontend</h2>
+        	Play games at a slower pace
         </div>
         <div class="col-md-4 border">
-        	login shit
+        	{{render "login-register"}}
         </div>
 </div>
 <br>
-
-{{outlet}}
+<div class="border">
+	{{outlet}}
+</div>
