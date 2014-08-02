@@ -1,15 +1,37 @@
-<form role="form">
-	<input type="text" class="form-control" placeholder="username">
-	<input type="password" class="form-control" placeholder="password"><br>
-	<button type="button" id="login-example-btn" data-loading-text="Loggin In..." class="btn btn-primary">
+<form class="form-horizontal" {{action "login" on="submit"}}>
+	<div class="control-group">
+	    <div class="control-label">
+	        <label>Username</label>
+	    </div>
+
+	    <div class="controls">
+	        {{input value=username type="text"}}
+	    </div>
+	</div>
+
+	<div class="control-group">
+	    <div class="control-label">
+	        <label>Password</label>
+	    </div>
+
+	    <div class="controls">
+	        {{input value=password type="password"}}
+	    </div>
+	</div>
+
+	<button type="submit" id="login-example-btn" data-loading-text="Loggin In..." class="btn btn-primary">
 	  Login
 	</button>
 	<button type="button" id="register-example-btn" data-loading-text="Loading..." class="btn btn-primary">
 	  Register
 	</button>
-	{{#if alert}}
+
+	{{#if loginFailed}}
 	<div class="alert alert-danger" role="alert">
 		<strong> words </strong>
 	</div>
+	{{/if}}
+	{{#if isSlowConnection}}
+    	<div class="alert alert-info">The request seems to be taking more time than usual, please wait.</div>
 	{{/if}}
 </form>
