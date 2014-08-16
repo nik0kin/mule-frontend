@@ -27,6 +27,7 @@
     "express": "^4.1.1",
     "glob": "^3.2.9",
     "originate": "0.1.5",
-    "ember-cli-bootstrap": "0.0.3"
+    "ember-cli-bootstrap": "0.0.3",
+    "broccoli": "~0.12.3"
   }
 }
