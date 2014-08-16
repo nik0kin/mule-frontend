@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import GamesController from './games';
+import constants from '../common/constants';
 
 var HeaderRightController = Ember.Controller.extend({
   //contentBinding: GamesController
@@ -16,7 +17,8 @@ var HeaderRightController = Ember.Controller.extend({
 
     this.set("timeout", setTimeout(this.slowConnection.bind(this), 5000));
 
-    var request = Ember.$.post("http://localhost:3130/LoginAuth", this.getProperties("username", "password"));
+    var webservicesUrl = constants.webservicesUrl,
+      request = Ember.$.post(webservicesUrl + "/LoginAuth", this.getProperties("username", "password"));
     request.then(this.success.bind(this), this.failure.bind(this));
     console.log('log in');
   },
