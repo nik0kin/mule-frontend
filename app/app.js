@@ -6,7 +6,8 @@ Ember.MODEL_FACTORY_INJECTIONS = true;
 
 var App = Ember.Application.extend({
   modulePrefix: 'mule-frontend', // TODO: loaded via config
-  Resolver: Resolver
+  Resolver: Resolver,
+  LOG_TRANSITIONS: true
 });
 
 loadInitializers(App, 'mule-frontend');

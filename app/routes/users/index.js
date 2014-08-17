@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import User from '../models/User';
+import User from '../../models/User';
 
 var UsersRoute = Ember.Route.extend({
 	renderTemplate: function () {
@@ -10,18 +10,21 @@ var UsersRoute = Ember.Route.extend({
       controller: this.controllerFor('headerRight')
     });
 	},
-  setupController: function(controller) {
+  beforeModel: function () {
+    if (!this.controllerFor('headerRight').loggedInUserId) {
+      this.transitionTo('games');
+    }
+  },
+  
+  model: function () {
     var userId = this.controllerFor('headerRight').loggedInUserId;
-    console.log('userId = ' + userId);
-    var that = this;
-    User.findQ(userId).then(function (user) {
-      console.log('YEELLING');
-      console.log(user);
-      //that.controllerFor('users.index').set('content', user);
-      //controller.set('content', user);
-      //that.refresh();
-    });
-
+    console.log(':) userId = ' + userId);
+    //var that = this;
+    return User.findQ(userId)
+  },
+  
+  setupController: function(controller) {
+    this.controllerFor('users').set('content', this.currentModel);
 		this.controllerFor('headerRight').set('content', Ember.A({}));
   }
 });

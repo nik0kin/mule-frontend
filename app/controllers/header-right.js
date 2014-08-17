@@ -31,7 +31,7 @@ var HeaderRightController = Ember.Controller.extend({
     this.set('loggedInUserId', data.userID);
     this.set('loggedInUsername', data.username);
     this.reset();
-    //document.location = "/welcome";
+    this.transitionToRoute('users');
   },
 
   loginFailure: function() {
