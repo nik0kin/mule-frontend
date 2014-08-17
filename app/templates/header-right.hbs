@@ -1,1 +1,5 @@
-{{render "login-register" controller}}
+{{#unless controller.loggedIn}}
+	{{render "login-register" controller}}
+{{else}}
+	{{render "logged-in-header-right" controller}}
+{{/unless}}

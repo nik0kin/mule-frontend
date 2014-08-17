@@ -13,6 +13,7 @@ loadInitializers(App, 'mule-frontend');
 
 Ember.Handlebars.registerBoundHelper('jsonToString', 
 	function(json) {
+    console.log(json);
   return JSON.stringify(json);
 });
 
@@ -30,5 +31,8 @@ top bar ( login or register (popup?) : turns into user info after logged in(hell
 
 /games/1
 	- all info about game (including board render)
+
+/users
+  - your info?
 
 */

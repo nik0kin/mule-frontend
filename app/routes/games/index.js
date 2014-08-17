@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Game from '../models/Game';
+import Game from '../../models/Game';
 
 var GamesRoute = Ember.Route.extend({
 	renderTemplate: function () {
@@ -11,8 +11,9 @@ var GamesRoute = Ember.Route.extend({
     });
 	},
   setupController: function(controller) {
-		controller.set('model', Game.findAll());
-
+    var games = Game.findAll();
+    
+    this.controllerFor('games').set('content', games);
 		this.controllerFor('headerRight').set('content', Ember.A({}));
   }
 });
