@@ -11,9 +11,11 @@ var GamesRoute = Ember.Route.extend({
     });
 	},
   setupController: function(controller) {
-    var games = Game.findAll();
+    var that = this;
+    Game.findAllQ().then(function (games) {
+      that.controllerFor('games').set('content', games);
+    });
     
-    this.controllerFor('games').set('content', games);
 		this.controllerFor('headerRight').set('content', Ember.A({}));
   }
 });

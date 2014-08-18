@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import constants from '../common/constants';
 
 var Game = Ember.Object.extend({
 
@@ -7,14 +8,38 @@ var Game = Ember.Object.extend({
 
 Game.reopenClass({
 
-  find: function(id) {
-    return this.findAll().find(function(notification) {
-      if (parseInt(notification.id, 10) == id) {
-        return notification;
-      }
+  findQ: function(id) {
+    return new Ember.RSVP.Promise(function (resolve, reject) {
+      Ember.$.ajax({
+        type: 'GET',
+        url: constants.webservicesUrl + '/games/' + id,
+        dataType: 'json',
+        success: function (rawGame) {
+          var game = Game.create(game);        
+          resolve(game);
+        },
+        error: reject
+      });
     });
   },
+  findAllQ: function() {
+    return new Ember.RSVP.Promise(function (resolve, reject) {
+      Ember.$.ajax({
+        type: 'GET',
+        url: constants.webservicesUrl + '/games',
+        dataType: 'json',
+        success: function (rawGames) {
+          var games = [];
+          Ember.A(rawGames).forEach(function (game) {
+            games.addObject(Game.create(game));
+          });
 
+           resolve(games);
+        },
+        error: reject
+      });
+    });
+  },
   findAll: function() {
 
     var games = [],
