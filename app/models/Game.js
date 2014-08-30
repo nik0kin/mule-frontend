@@ -1,26 +1,50 @@
 import Ember from 'ember';
 import constants from '../common/constants';
 
-var Game = Ember.Object.extend({
+var RSVP = Ember.RSVP;
 
+var Game = Ember.Object.extend({
+  history: null
 });
 
 
 Game.reopenClass({
 
   findQ: function(id) {
-    return new Ember.RSVP.Promise(function (resolve, reject) {
-      Ember.$.ajax({
-        type: 'GET',
-        url: constants.webservicesUrl + '/games/' + id,
-        dataType: 'json',
-        success: function (rawGame) {
-          var game = Game.create(game);        
-          resolve(game);
-        },
-        error: reject
+    var promises = {
+      game: new RSVP.Promise(function (resolve, reject) {
+        Ember.$.ajax({
+          type: 'GET',
+          url: constants.webservicesUrl + '/games/' + id,
+          dataType: 'json',
+          success: function (rawGame) {
+            var game = Game.create(rawGame);        
+            resolve(game);
+          },
+          error: reject
+        });
+      }),
+      history: new RSVP.Promise(function (resolve, reject) {
+        Ember.$.ajax({
+          type: 'GET',
+          url: constants.webservicesUrl + '/games/' + id + '/history',
+          dataType: 'json',
+          success: function (rawHistory) {
+            //var game = Game.create(rawGame);        
+            resolve(rawHistory);
+          },
+          error: reject
+        });
+      })
+    };
+
+    return RSVP.hash(promises)
+      .then(function (results) {
+        var game = results.game;
+        game.history = results.history;
+
+        return game;
       });
-    });
   },
   findAllQ: function() {
     return new Ember.RSVP.Promise(function (resolve, reject) {

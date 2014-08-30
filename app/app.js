@@ -14,7 +14,6 @@ loadInitializers(App, 'mule-frontend');
 
 Ember.Handlebars.registerBoundHelper('jsonToString', 
 	function(json) {
-    console.log(json);
   return JSON.stringify(json);
 });
 
