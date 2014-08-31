@@ -3,6 +3,12 @@ import User from '../../models/User';
 
 var UsersRoute = Ember.Route.extend({
 	renderTemplate: function () {
+    this.render('headerLeft', { 
+      view: 'headerLeft', 
+      outlet: 'headerLeft', 
+      into: 'application',
+      controller: this.controllerFor('headerLeft')
+    });
 		this.render('headerRight', { 
       view: 'headerRight', 
       outlet: 'headerRight', 

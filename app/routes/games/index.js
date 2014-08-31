@@ -4,11 +4,22 @@ import constants from '../../common/constants';
 
 var GamesRoute = Ember.Route.extend({
 	renderTemplate: function () {
+    this.render('headerLeft', { 
+      view: 'headerLeft', 
+      outlet: 'headerLeft', 
+      into: 'application',
+      controller: this.controllerFor('headerLeft')
+    });
 		this.render('headerRight', { 
       view: 'headerRight', 
       outlet: 'headerRight', 
       into: 'application',
       controller: this.controllerFor('headerRight')
+    });
+    this.render('games', {
+      view: 'games',
+      into: 'application',
+      controller: this.controllerFor('games')
     });
 	},
   setupController: function(controller) {
