@@ -22,4 +22,7 @@ var app = new EmberApp();
 //app.import('vendor/bootstrap/dist/css/bootstrap-theme.css');
 //app.import('vendor/bootstrap/dist/css/bootstrap-theme.css.map');
 
+
+app.import('vendor/lodash/dist/lodash.js');
+
 module.exports = app.toTree();

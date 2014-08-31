@@ -4,7 +4,41 @@ import constants from '../common/constants';
 var RSVP = Ember.RSVP;
 
 var Game = Ember.Object.extend({
-  history: null
+  history: null,
+  playersCount: function () {
+    var c = 0;
+    for(var p in this.get('players')) {
+      c++;
+    }
+    return c;
+  }.property('players'),
+  statusMsg: function () {
+    switch(this.get('gameStatus')){
+      case 'open':
+        return "Open";
+      case 'inProgress':
+        return "In Progress";
+      case 'finished':
+        return "Ended";
+      default:
+        //error
+        return '';
+    }
+  }.property('gameStatus'),
+  statusColor: function () {
+    switch(this.get('gameStatus')){
+      case 'open':
+        return "#00FF00";
+      case 'inProgress':
+        return "#0000FF";
+      case 'finished':
+        return "#FF0000";
+
+      default:
+        //error
+        return "#000000";
+    }
+  }.property('gameStatus')
 });
 
 
@@ -33,7 +67,7 @@ Game.reopenClass({
             //var game = Game.create(rawGame);        
             resolve(rawHistory);
           },
-          error: reject
+          error: function () { resolve({currentRound: 0}) }
         });
       })
     };
