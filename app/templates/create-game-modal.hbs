@@ -1,0 +1,9 @@
+{{#my-modal title='Create Game' ok='createGame' close='removeModal'}}
+    <form {{action 'ok' on='createGame' target=view}}>
+        <div class="form-group">
+            <label>name</label>
+            {{input class="form-control" value=name}}
+            <br>
+        </div>
+    </form>
+{{/my-modal}}

@@ -26,7 +26,7 @@ var UsersRoute = Ember.Route.extend({
     var userId = this.controllerFor('headerRight').loggedInUserId;
     console.log(':) userId = ' + userId);
     //var that = this;
-    return User.findQ(userId)
+    return User.findQ(userId);
   },
   
   setupController: function(controller) {

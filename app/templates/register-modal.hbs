@@ -1,3 +1,11 @@
 {{#my-modal title='Register' ok='register' close='removeModal'}}
-  Register Boii
+    <form {{action 'ok' on='register' target=view}}>
+        <div class="form-group">
+            <label>Username</label>
+            {{input class="form-control" value=username}}
+            <br>
+            <label>Password</label>
+            {{input type="password" class="form-control" value=password}}
+        </div>
+    </form>
 {{/my-modal}}

@@ -13,17 +13,19 @@ var HeaderRightController = Ember.Controller.extend({
   loggedInUserId: null,
   loggedInUsername: null,
 
-  login: function() {
-    this.setProperties({
-      loginFailed: false,
-      isProcessing: true
-    });
+  actions: {
+    login: function() {
+      this.setProperties({
+        loginFailed: false,
+        isProcessing: true
+      });
 
-    this.set("timeout", setTimeout(this.slowConnection.bind(this), 5000));
+      this.set("timeout", setTimeout(this.slowConnection.bind(this), 5000));
 
-    var webservicesUrl = constants.webservicesUrl + "/LoginAuth",
-      request = Ember.$.post(webservicesUrl, this.getProperties("username", "password"));
-    request.then(this.loginSuccess.bind(this), this.loginFailure.bind(this));
+      var webservicesUrl = constants.webservicesUrl + "/LoginAuth",
+        request = Ember.$.post(webservicesUrl, this.getProperties("username", "password"));
+      request.then(this.loginSuccess.bind(this), this.loginFailure.bind(this));
+    }
   },
 
   loginSuccess: function(data) {
