@@ -19,6 +19,7 @@
 		<tr>
 			<td> Round: {{history.currentRound}}</td>
 			<td> 
+				Debug: <a {{bind-attr href="boardViewUrl"}} target="_blank"> Board View </a> <br>
 				RuleBundle GameSettings: <br>
 				{{jsonToString ruleBundleGameSettings}}
     		</td>
@@ -32,7 +33,9 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				playerList
+				{{#each player in playersArray}}
+					{{player.relId}}). {{player.username}} : {{player.status}} <br>
+				{{/each}}
 			</td>
 		</tr>
 	</table>

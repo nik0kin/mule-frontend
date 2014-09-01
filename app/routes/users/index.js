@@ -2,20 +2,20 @@ import Ember from 'ember';
 import User from '../../models/User';
 
 var UsersRoute = Ember.Route.extend({
-	renderTemplate: function () {
+  renderTemplate: function () {
     this.render('headerLeft', { 
       view: 'headerLeft', 
       outlet: 'headerLeft', 
       into: 'application',
       controller: this.controllerFor('headerLeft')
     });
-		this.render('headerRight', { 
+    this.render('headerRight', {
       view: 'headerRight', 
       outlet: 'headerRight', 
       into: 'application',
       controller: this.controllerFor('headerRight')
     });
-	},
+  },
   beforeModel: function () {
     if (!this.controllerFor('headerRight').loggedInUserId) {
       this.transitionTo('games');
@@ -26,12 +26,12 @@ var UsersRoute = Ember.Route.extend({
     var userId = this.controllerFor('headerRight').loggedInUserId;
     console.log(':) userId = ' + userId);
     //var that = this;
-    return User.findQ(userId);
+    return User.fetchQ(userId);
   },
   
-  setupController: function(controller) {
+  setupController: function() {
     this.controllerFor('users').set('content', this.currentModel);
-		this.controllerFor('headerRight').set('content', Ember.A({}));
+    this.controllerFor('headerRight').set('content', Ember.A({}));
   }
 });
 

@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import GamesController from './games';
 import constants from '../common/constants';
 
 var HeaderRightController = Ember.Controller.extend({

@@ -6,19 +6,29 @@ var User = Ember.Object.extend({
 });
 
 
+var allUsersCache;
 User.reopenClass({
-
-  findQ: function(id) {
-    return this.findAllQ().then(function (users) {
+  getUserQ: function (id) {
+    if (allUsersCache) {
+      var user = allUsersCache.find(function (user) {
+        return user._id === id;
+      });
+      return Ember.RSVP.resolve(user);
+    }
+    return this.fetchQ(id);
+  },
+  // costly to findall everytime, tsk tsk
+  fetchQ: function(id) {
+    return this.fetchAllQ().then(function (users) {
       return users.find(function(user) {
-        if (user._id == id) {
+        if (user._id === id) {
           return user;
         }
       });
     });
   },
 
-  findAllQ: function() {
+  fetchAllQ: function() {
     return new Ember.RSVP.Promise(function (resolve, reject) {
       Ember.$.ajax({
         type: 'GET',
@@ -30,7 +40,8 @@ User.reopenClass({
             users.addObject(User.create(user));
           });
 
-           resolve(users);
+          allUsersCache = users;
+          resolve(users);
         },
         error: reject
       });
