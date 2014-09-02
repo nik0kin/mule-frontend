@@ -1,6 +1,8 @@
 /*global _ */
 import Ember from 'ember';
 
+var baseUrl = '../../webservices/public';
+
 var GameShowController = Ember.ObjectController.extend({
   canPlayGame: function () {
     var ruleBundleName = this.get('ruleBundle.name');
@@ -14,8 +16,6 @@ var GameShowController = Ember.ObjectController.extend({
   }.property('gameStatus'),
   playGameUrl: function () {
     if (!this.get('ruleBundle')) { return ''; }
-
-    var baseUrl = '../../webservices/public';
 
     var currentUserId = this.controllerFor('headerRight').loggedInUserId;
     var currentPlayerRel;
@@ -40,7 +40,10 @@ var GameShowController = Ember.ObjectController.extend({
       url = ruleBundleUrlSwitchObject[ruleBundleName];
 
     return baseUrl + '/' + url; 
-  }.property('_id', 'ruleBundle', 'players')
+  }.property('_id', 'ruleBundle', 'players'),
+  boardViewUrl: function () {
+    return baseUrl + '/board.html?gameID=' + this.get('_id'); 
+  }.property('_id')
 });
 
 export default GameShowController;
