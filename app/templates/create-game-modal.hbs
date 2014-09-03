@@ -1,9 +1,30 @@
 {{#my-modal title='Create Game' ok='createGame' close='removeModal'}}
     <form {{action 'ok' on='createGame' target=view}}>
         <div class="form-group">
-            <label>name</label>
-            {{input class="form-control" value=name}}
+            <label>game name</label>
+            {{input class="form-control" value=name}} <br>
+            
+            <label>RuleBundle</label>
+            SELECT <br>
             <br>
+
+            <label>Static Max Players</label>
+            {{input class="form-control" value=maxPlayers}} <br>
+
+            <label>Max Players (x - y)</label>
+            {{input class="form-control" value=maxPlayers}} <br>
+            <br>
+
+            <label>TurnProgressStyle</label>
+            SELECT <br>
+
+            <label>Turn Time Limit (seconds, &gt;15)</label>
+            {{input class="form-control" value=name}} <br>
+            <br>
+
+            each custom board settting
+             <label>width - (x - y) or [x,y,z] </label>
+            {{input class="form-control" value=width}} <br>
         </div>
     </form>
 {{/my-modal}}

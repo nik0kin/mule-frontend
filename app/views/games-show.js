@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 var GameShowView = Ember.View.extend({
-  layoutName: 'games-show'
+  layoutName: 'games/show'
 });
 
 export default GameShowView;
