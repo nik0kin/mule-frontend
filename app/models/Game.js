@@ -116,7 +116,15 @@ Game.reopenClass({
             games.addObject(Game.create(game));
           });
 
-           resolve(games);
+          var sortedGames = _.sortBy(games, function (game) {
+            return {
+              open: 0,
+              inProgress: 1,
+              finished: 2
+            }[game.gameStatus];
+          });
+
+          resolve(sortedGames);
         },
         error: reject
       });
