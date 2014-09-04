@@ -5,10 +5,9 @@ var HeaderLeftController = Ember.Controller.extend({
   isUp: false,
   init: function () {
     var that = this;
-    Ember.$.get(constants.webservicesUrl + '/alive', {
-      dataType: 'json',
-      success: function () {
-        console.log('up')
+    Ember.$.getJSON(constants.webservicesUrl + '/alive', function (data, textStatus) {
+      if (textStatus === 'success') {
+        console.log('up');
         that.set('isUp', true);
       }
     });

@@ -1,0 +1,29 @@
+{{#link-to 'games.show' _id}}
+<div class="border">
+	<table cellSpacing=2 border=2>
+		<tr>
+			<td> name: <h3>{{name}}</h3> </td>
+			<td> 
+				RuleBundle: <b>{{ruleBundle.name}}</b> <br>
+				GameStatus: <FONT {{bind-attr color="statusColor"}}><b>{{statusMsg}}</b></FONT> <br>
+				Players:  {{playersCount}}/{{maxPlayers}}
+			</td>
+		</tr>
+		<tr>
+			<td> Round: {{history.currentRound}}</td>
+			<td> 
+				RuleBundle GameSettings: <br>
+				{{jsonToString ruleBundleGameSettings}}
+    		</td>
+		</tr>
+		<tr>
+			<td>TurnProgressStyle: {{turnProgressStyle}} </td>
+			<td>
+				TurnTimeLimit: {{turnTimeLimit}} seconds<br>
+				NextTurnTime: {{nextTurnTime}}
+			</td>
+		</tr>
+	</table>
+</div>
+{{/link-to}}
+<br>
