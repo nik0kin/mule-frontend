@@ -7,6 +7,12 @@ var RSVP = Ember.RSVP;
 
 var Game = Ember.Object.extend({
   history: null,
+  isGameStatusInProgress: function () {
+    return this.get('gameStatus') === 'inProgress';
+  }.property('gameStatus'),
+  isAutoProgress: function () {
+    return this.get('turnProgressStyle') === 'autoprogress';
+  }.property('turnProgressStyle'),
   playersCount: function () {
     var c = 0;
     _.each(this.get('players'), function () {
@@ -41,6 +47,14 @@ var Game = Ember.Object.extend({
         return "#000000";
     }
   }.property('gameStatus'),
+  ruleBundleIconFile: function () {
+    var ruleBundleName = this.get('ruleBundle.name').toLowerCase();
+    if (ruleBundleName === 'mulesprawl' || ruleBundleName === 'backgammon') {
+      return 'assets/images/ruleBundleIcons/' + ruleBundleName + '.png';
+    }
+
+    return null;
+  }.property('ruleBundle.name'),
   playersArray: null,
 
   init: function () {

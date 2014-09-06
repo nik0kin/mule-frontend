@@ -34,6 +34,7 @@ var GamesShowRoute = Ember.Route.extend({
   },
   actions: {
     joinGame: function (id) {
+      var that = this;
       Ember.$.ajax({
           type: "POST",
           url: constants.webservicesUrl + "/games/" + id + '/join'
@@ -46,7 +47,8 @@ var GamesShowRoute = Ember.Route.extend({
           }
 
           alert('you joined gameID[' + data.gameID + ']');
-          this.refresh();
+          console.log(this);
+          that.refresh();
 
         }).fail(function(msg){
           alert("JoinGame Fail Response:" + JSON.stringify(msg));

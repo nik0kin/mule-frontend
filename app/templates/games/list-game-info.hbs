@@ -1,29 +1,27 @@
 {{#link-to 'games.show' _id}}
 <div class="border">
-	<table cellSpacing=2 border=2>
-		<tr>
-			<td> name: <h3>{{name}}</h3> </td>
-			<td> 
-				RuleBundle: <b>{{ruleBundle.name}}</b> <br>
-				GameStatus: <FONT {{bind-attr color="statusColor"}}><b>{{statusMsg}}</b></FONT> <br>
-				Players:  {{playersCount}}/{{maxPlayers}}
-			</td>
-		</tr>
-		<tr>
-			<td> Round: {{history.currentRound}}</td>
-			<td> 
-				RuleBundle GameSettings: <br>
-				{{jsonToString ruleBundleGameSettings}}
-    		</td>
-		</tr>
-		<tr>
-			<td>TurnProgressStyle: {{turnProgressStyle}} </td>
-			<td>
+	<div class="row">
+		<div class="col-md-3">
+			name: <h3>{{name}}</h3>
+			Players:  {{playersCount}}/{{maxPlayers}}
+		</div>
+		<div class="col-md-4">
+			<FONT {{bind-attr color="statusColor"}}><h3><b>{{statusMsg}}</b></h3></FONT>
+			{{#if history.currentRound}} Round: <b>{{history.currentRound}} </b> <br> {{/if}}
+			<br>
+			TurnProgressStyle: {{turnProgressStyle}} <br>
+			{{#if isAutoProgress}}
 				TurnTimeLimit: {{turnTimeLimit}} seconds<br>
-				NextTurnTime: {{nextTurnTime}}
-			</td>
-		</tr>
-	</table>
+				{{#if isGameStatusInProgress}} NextTurnTime: {{nextTurnTime}} {{/if}}
+			{{/if}}
+		</div>
+		<div class="col-md-4">
+			RuleBundle: <b>{{ruleBundle.name}}</b> 
+			<img {{bind-attr src=ruleBundleIconFile}}> <br>
+			RuleBundle GameSettings: <br>
+				{{jsonToString ruleBundleGameSettings}}
+		</div>
+	</div>
 </div>
 {{/link-to}}
 <br>
