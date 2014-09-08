@@ -31,6 +31,7 @@ var GamesRoute = Ember.Route.extend({
         var promises = [];
 
         games.forEach(function (game, index) {
+          if (game.gameStatus === 'open') { return; }
           var p = new Ember.RSVP.Promise(function (resolve, reject) {
             Ember.$.ajax({
               type: 'GET',

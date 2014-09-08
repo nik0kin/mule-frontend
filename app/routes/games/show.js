@@ -27,10 +27,14 @@ var GamesShowRoute = Ember.Route.extend({
     console.log(controller);
     console.log(model);
 
-
+    var that = this;
     Game.findQ(model._id).then(function (game) {
       controller.set('content', game);
-    });
+    })
+      .fail(function () {
+        console.log('404 Game, redirecting');
+        that.transitionTo('games');
+      });
   },
   actions: {
     joinGame: function (id) {
@@ -41,7 +45,7 @@ var GamesShowRoute = Ember.Route.extend({
         }).done(function(data) {
           console.log( "Data Recieved: " + JSON.stringify(data) );
 
-          if(data.status != 0){
+          if(data.status !== 0){
             alert("join game failed: "+data.statusMsg);
             return;
           }
