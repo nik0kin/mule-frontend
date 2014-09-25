@@ -7,6 +7,9 @@ var RSVP = Ember.RSVP;
 
 var Game = Ember.Object.extend({
   history: null,
+  isGameStatusOpen: function () {
+    return this.get('gameStatus') === 'open';
+  }.property('gameStatus'),
   isGameStatusInProgress: function () {
     return this.get('gameStatus') === 'inProgress';
   }.property('gameStatus'),

@@ -10,10 +10,18 @@
 			</td>
 		</tr>
 		<tr>
-			<td> <a {{bind-attr href="playGameUrl" enabled="canPlayGame"}} target="_blank"> Play Game </a> </td>
+			<td>
+				{{#if canPlayGame}}
+					<a {{bind-attr href="playGameUrl" enabled="canPlayGame"}} target="_blank"> Play Game </a>
+				{{/if}}
+			</td>
 			<td> 
 				{{#if canJoinGame}}
 					<button {{action 'joinGame' _id}}>Join Game</button>
+				{{else}}
+					{{#if isGameStatusOpen}}{{#unless loggedInUserId}}
+						<h4><b>Login to Join Game</b></h4>
+					{{/unless}}{{/if}}
 				{{/if}}
 			</td>
 		</tr>
