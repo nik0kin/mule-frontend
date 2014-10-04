@@ -1,4 +1,5 @@
+import ENV from 'mule-frontend/config/environment';
 
 export default {
-  webservicesUrl: window.MuleFrontendENV.APP.webservicesPrefix
+  webservicesUrl: ENV.APP.webservicesPrefix
 };

@@ -2,6 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
+    modulePrefix: 'mule-frontend',
     environment: environment,
     baseURL: '',
     locationType: 'hash',
@@ -16,7 +17,10 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
       webservicesPrefix: '../webservices'
-    }
+    },
+
+    // as of ember-cli this is needed to stop Refused to apply inline style because it violates the following Content Security Policy directive: "style-src 'self'". Either the 'unsafe-inline' keyword, a hash ('sha256-...'), or a nonce ('nonce-...') is required to enable inline execution.
+    contentSecurityPolicyHeader: 'Disabled-Content-Security-Policy'
   };
 
   if (environment === 'development') {
@@ -28,11 +32,19 @@ module.exports = function(environment) {
   }
 
   if (environment === 'test') {
+    // Testem prefers this...
+    ENV.baseURL = '/';
+    ENV.locationType = 'auto';
 
+    // keep test console output quieter
+    ENV.APP.LOG_ACTIVE_GENERATION = false;
+    ENV.APP.LOG_VIEW_LOOKUPS = false;
+
+    ENV.APP.rootElement = '#ember-testing';
   }
 
   if (environment === 'production') {
-    baseURL = '/mule/';
+    baseURL = '/mule/'
   }
 
   return ENV;
