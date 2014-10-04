@@ -1,34 +1,3 @@
-html, body {
-  margin: 20px;
-}
-
-div .border{
-    border:4px solid;
-    border-radius:25px;
-    background: #FFFFFF;
-    padding:5px 20px;
-}
-
-table {
-    width:80%;
-    border-collapse:collapse;
-}
-
-th {
-    color:#678197;
-    padding:.3em 1em;
-    text-align:left;
-    font-weight : bold;
-}
-
-td {
-    color:#678197;
-    padding:.3em 1em;
-    text-align:left;
-}
-
-
-
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -282,8 +251,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('http://tgp.io/fonts/glyphicons-halflings-regular.eot');
-  src: url('http://tgp.io/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('http://tgp.io/fonts/glyphicons-halflings-regular.woff') format('woff'), url('http://tgp.io/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('http://tgp.io/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
@@ -3784,7 +3753,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   position: relative;
   min-height: 60px;
   margin-bottom: 25px;
-  background: url("http://tgp.io/img/nav-tile.png") repeat-x fixed;
+  background: url("../img/nav-tile.png") repeat-x fixed;
 }
 @media (min-width: 768px) {
   .navbar {
@@ -4578,7 +4547,7 @@ a.list-group-item.active > .badge,
   margin-top: -10px;
   margin-bottom: -40px;
   color: #aeb2b3;
-  background-image: url("http://tgp.io/img/banner.jpg");
+  background-image: url("../img/banner.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   height: 200px;
@@ -5475,7 +5444,7 @@ button.close {
   height: 340px;
   margin: -168px auto 0 auto;
   padding: 24px 30px 0 30px;
-  background-image: url("http://tgp.io/img/handheld-background@2x.png");
+  background-image: url("../img/handheld-background@2x.png");
   background-size: 100% 100%;
   font-family: 'Source Sans Pro', Menlo, Monaco, monospace;
   border-radius: 4px;
@@ -6220,7 +6189,7 @@ button.close {
   height: 290px;
   margin: 0 auto;
   padding: 0 0 0 20px;
-  background-image: url("http://tgp.io/img/cartridge-background@2x.png");
+  background-image: url("../img/cartridge-background@2x.png");
   background-size: 100% 100%;
   margin-bottom: 60px;
 }

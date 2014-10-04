@@ -1,3 +1,30 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="navbarcontainer">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tgp-navbar-collapse">
+				<span class="sr-only">Toggle</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#" data-toggle="collapse" data-target="#tgp-navbar-collapse"><img class="navlogo" src="http://www.tgp.io/img/nav-logo@2x.png"></a>
+		</div>
+		<div class="collapse navbar-collapse" id="tgp-navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="http://www.tgp.io/index.html">GAMES</a></li>
+				<li><a href="http://www.tgp.io/about.html" class="navlink">ABOUT</a></li>
+				<li><a href="http://www.tgp.io/devblog.html" class="navlink">DEVBLOG</a></li>
+				<li class="active"><a href="" class="navlink">MULE</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://twitter.com/tgpdevs" class="navsocial" target="_blank"><img class="navsocial" src="http://www.tgp.io/img/nav-icon-twitter@2x.png"></a></li>
+				<li><a href="https://github.com/TheGamingProject" class="navsocial" target="_blank"><img class="navsocial" src="http://www.tgp.io/img/nav-icon-github@2x.png"></a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container"> 
 <div class="border row">
     <div class="col-md-8 border">
     	{{outlet headerLeft}}
@@ -11,3 +38,4 @@
 	{{outlet}}
 </div>
 {{outlet modal}}
+</div>

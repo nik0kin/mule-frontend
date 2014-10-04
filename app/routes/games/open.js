@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import Game from '../../models/Game';
-import constants from '../../common/constants';
 
 var OpenGamesRoute = Ember.Route.extend({
 	renderTemplate: function () {
