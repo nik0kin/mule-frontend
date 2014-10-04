@@ -1,36 +1,59 @@
+/*global _ */
+
 import Ember from 'ember';
 import Game from '../../models/Game';
 import constants from '../../common/constants';
 
-var GamesRoute = Ember.Route.extend({
-	renderTemplate: function () {
+var MyGamesRoute = Ember.Route.extend({
+
+  beforeModel: function () {
+    if (!this.controllerFor('headerRight').loggedInUserId) {
+      this.transitionTo('games.open');
+    }
+  },
+
+  renderTemplate: function () {
     this.render('headerLeft', { 
       view: 'headerLeft', 
       outlet: 'headerLeft', 
       into: 'application',
       controller: this.controllerFor('headerLeft')
     });
-		this.render('headerRight', { 
+    this.render('headerRight', { 
       view: 'headerRight', 
       outlet: 'headerRight', 
       into: 'application',
       controller: this.controllerFor('headerRight')
     });
     this.render('games', {
-      view: 'games',
+      view: 'games/my',
       into: 'application',
       controller: this.controllerFor('games')
     });
-	},
-  setupController: function(controller) {
-    var that = this;
-    Game.findAllQ().then(function (games) {
-      that.controllerFor('games').set('content', games);
+  },
+  setupController: function() {
+    var that = this,
+      loggedInUserId = this.controllerFor('headerRight').loggedInUserId;
 
-      var getHistorysQ = function (games) {
+    Game.findAllQ().then(function (games) {
+      var myGames = _.filter(games, function (game) {
+        var userInGame = false;
+
+        _.each(game.players, function (player) {
+          if (player.playerID === loggedInUserId) {
+            userInGame = true;
+          }
+        });
+
+        return userInGame;
+      });
+console.log(myGames)
+      that.controllerFor('games').set('content', myGames);
+
+      var getHistorysQ = function (_games) {
         var promises = [];
 
-        games.forEach(function (game, index) {
+        _games.forEach(function (game) {
           if (game.gameStatus === 'open') { return; }
           var p = new Ember.RSVP.Promise(function (resolve, reject) {
             Ember.$.ajax({
@@ -51,11 +74,11 @@ var GamesRoute = Ember.Route.extend({
 
         return Ember.RSVP.all(promises);
       };
-      return getHistorysQ(games);
+      return getHistorysQ(myGames);
     });
     
-		this.controllerFor('headerRight').set('content', Ember.A({}));
+    this.controllerFor('headerRight').set('content', Ember.A({}));
   }
 });
 
-export default GamesRoute;
+export default MyGamesRoute;

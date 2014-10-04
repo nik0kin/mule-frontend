@@ -1,6 +1,6 @@
 import Ember from "ember";
 
-export default Ember.Handlebars.registerHelper('every', function(context, options) {
+export default Ember.Handlebars.registerHelper('every', function(context) {
   var oArray = [], actualData = this.get(context);
 
   for (var k in actualData) {

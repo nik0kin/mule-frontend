@@ -18,7 +18,7 @@ var UsersRoute = Ember.Route.extend({
   },
   beforeModel: function () {
     if (!this.controllerFor('headerRight').loggedInUserId) {
-      this.transitionTo('games');
+      this.transitionTo('games.open');
     }
   },
   

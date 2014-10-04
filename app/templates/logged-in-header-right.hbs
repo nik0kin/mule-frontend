@@ -1,5 +1,7 @@
 <h3> Hello {{loggedInUsername}} </h3>		
 {{#link-to 'users'}}Your Profile{{/link-to}} ||
 <a href="" > Log Out </a><br>
-{{#link-to 'games'}}All Games{{/link-to}} || 
+
+{{#link-to 'games.my'}}My Games{{/link-to}} || 
+{{#link-to 'games.open'}}Open Games{{/link-to}} || 
 <a href="#" {{action 'showModal' 'create-game-modal' on='click'}}> Create Game </a>

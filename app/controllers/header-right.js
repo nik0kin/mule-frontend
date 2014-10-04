@@ -32,7 +32,7 @@ var HeaderRightController = Ember.Controller.extend({
     this.set('loggedInUserId', data.userID);
     this.set('loggedInUsername', data.username);
     this.reset();
-    //this.transitionToRoute('users');
+    this.transitionToRoute('games.my');
   },
 
   loginFailure: function() {

@@ -145,6 +145,28 @@ Game.reopenClass({
         error: reject
       });
     });
+  },
+  findAllOpenQ: function() {
+    return new Ember.RSVP.Promise(function (resolve, reject) {
+      Ember.$.ajax({
+        type: 'GET',
+        url: constants.webservicesUrl + '/games',
+        dataType: 'json',
+        success: function (rawGames) {
+          var games = [];
+          Ember.A(rawGames).forEach(function (game) {
+            games.addObject(Game.create(game));
+          });
+
+          var openGames = _.filter(games, function (game) {
+            return game.gameStatus === 'open';
+          });
+
+          resolve(openGames);
+        },
+        error: reject
+      });
+    });
   }
 });
 
