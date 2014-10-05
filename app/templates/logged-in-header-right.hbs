@@ -1,6 +1,6 @@
 <h3> Hello {{loggedInUsername}} </h3>		
 {{#link-to 'users'}}Your Profile{{/link-to}} ||
-<a href="" > Log Out </a><br>
+<a href="#" {{action "logout" on="click"}}> Log Out </a><br>
 
 {{#link-to 'games.my'}}My Games{{/link-to}} || 
 {{#link-to 'games.open'}}Open Games{{/link-to}} || 

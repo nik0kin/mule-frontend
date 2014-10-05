@@ -12,6 +12,19 @@ var HeaderRightController = Ember.Controller.extend({
   loggedInUserId: null,
   loggedInUsername: null,
 
+  init: function () {
+    var that = this;
+
+    Ember.$.get(constants.webservicesUrl + '/session')
+      .then(function (result) {
+        console.log('logged in as ' + result._id);
+
+        that.set('loggedIn', true);
+        that.set('loggedInUserId', result._id);
+        that.set('loggedInUsername', result.username);
+      });
+  },
+
   actions: {
     login: function() {
       this.setProperties({
@@ -24,6 +37,23 @@ var HeaderRightController = Ember.Controller.extend({
       var webservicesUrl = constants.webservicesUrl + "/LoginAuth",
         request = Ember.$.post(webservicesUrl, this.getProperties("username", "password"));
       request.then(this.loginSuccess.bind(this), this.loginFailure.bind(this));
+    },
+
+    logout: function () {
+      this.setProperties({
+        loggedIn: false,
+        loggedInUserId: undefined,
+        loggedInUsername: undefined
+      });
+
+      var webservicesUrl = constants.webservicesUrl + "/logout",
+        that = this;
+
+      Ember.$.post(webservicesUrl)
+        .then(function () {
+          console.log('logged out');
+          that.transitionToRoute('games.open');
+        });
     }
   },
 
