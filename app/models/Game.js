@@ -16,6 +16,8 @@ var Game = Ember.Object.extend({
   isAutoProgress: function () {
     return this.get('turnProgressStyle') === 'autoprogress';
   }.property('turnProgressStyle'),
+
+  ////////PLAYER STUFF/////////
   playersCount: function () {
     var c = 0;
     _.each(this.get('players'), function () {
@@ -23,6 +25,64 @@ var Game = Ember.Object.extend({
     });
     return c;
   }.property('players'),
+
+  whosTurnPlayerRel: function () { // an array
+    var h = this.get('history');
+
+    if (!h) {
+      return undefined;
+    }
+
+    if (h.turnSubmitStyle === 'roundRobin') {
+      return [h.turnOrder[h.currentPlayerIndexTurn]];
+    }
+
+    var array = [];
+    _.each(h.currentTurnStatus, function (status, playerRel) {
+      if (status) {
+        array.push(playerRel);
+      }
+    });
+
+    return array;
+  }.property('history'),
+
+  whosTurnUsername: function () {
+    var playersArray = this.get('playersArray'),
+      whosTurnPlayerRel = this.get('whosTurnPlayerRel');
+
+    if (!whosTurnPlayerRel || whosTurnPlayerRel.length === 0) {
+      return undefined;
+    }
+
+    var usernamesArray = [];
+    _.each(whosTurnPlayerRel, function (playerRel) {
+      _.each(playersArray, function (playerInfo) {
+        if (playerInfo.relId === playerRel) {
+          usernamesArray.push(playerInfo.username);
+        }
+      });
+    });
+
+    return usernamesArray;
+  }.property('whosTurnPlayerRel', 'playersArray'),
+
+  whosTurnUsernameDisplay: function () {
+    var whosTurnUsername = this.get('whosTurnUsername'),
+      str = '';
+
+    _.each(whosTurnUsername, function (username, index) {
+      str += username;
+
+      if (index !== whosTurnUsername.length - 1) {
+        str += ', ';
+      }
+    });
+
+    return str;
+  }.property('whosTurnUsername'),
+
+  ////////////////////////////
   statusMsg: function () {
     switch(this.get('gameStatus')){
       case 'open':
@@ -110,7 +170,7 @@ Game.reopenClass({
             dataType: 'json',
             success: function (rawHistory) {
               //var game = Game.create(rawGame);
-              game.history = rawHistory;       
+              game.set('history', rawHistory);
               resolve(game);
             },
             error: function () { resolve({currentRound: 0}); }
