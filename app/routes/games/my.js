@@ -1,10 +1,11 @@
 /*global _ */
 
 import Ember from 'ember';
+import BaseRoute from '../baseRoute';
 import Game from '../../models/Game';
 import constants from '../../common/constants';
 
-var MyGamesRoute = Ember.Route.extend({
+var MyGamesRoute = BaseRoute.extend({
 
   beforeModel: function () {
     if (!this.controllerFor('headerRight').loggedInUserId) {
@@ -13,18 +14,7 @@ var MyGamesRoute = Ember.Route.extend({
   },
 
   renderTemplate: function () {
-    this.render('headerLeft', { 
-      view: 'headerLeft', 
-      outlet: 'headerLeft', 
-      into: 'application',
-      controller: this.controllerFor('headerLeft')
-    });
-    this.render('headerRight', { 
-      view: 'headerRight', 
-      outlet: 'headerRight', 
-      into: 'application',
-      controller: this.controllerFor('headerRight')
-    });
+    this._super();
     this.render('games', {
       view: 'games/my',
       into: 'application',

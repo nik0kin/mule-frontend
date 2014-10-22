@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import BaseRoute from './baseRoute';
 
-var IndexRoute = Ember.Route.extend({
+var IndexRoute = BaseRoute.extend({
   redirect: function() {
     this.transitionTo('games.open');
   }

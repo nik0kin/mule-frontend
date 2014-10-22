@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import BaseRoute from '../baseRoute';
 
-var GamesIndexRoute = Ember.Route.extend({
+var GamesIndexRoute = BaseRoute.extend({
   beforeModel: function() {
     this.transitionTo('games.open');
   }

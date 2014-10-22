@@ -1,21 +1,8 @@
 import Ember from 'ember';
+import BaseRoute from '../baseRoute';
 import User from '../../models/User';
 
-var UsersRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render('headerLeft', { 
-      view: 'headerLeft', 
-      outlet: 'headerLeft', 
-      into: 'application',
-      controller: this.controllerFor('headerLeft')
-    });
-    this.render('headerRight', {
-      view: 'headerRight', 
-      outlet: 'headerRight', 
-      into: 'application',
-      controller: this.controllerFor('headerRight')
-    });
-  },
+var UsersRoute = BaseRoute.extend({
   beforeModel: function () {
     if (!this.controllerFor('headerRight').loggedInUserId) {
       this.transitionTo('games.open');

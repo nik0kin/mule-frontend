@@ -1,21 +1,11 @@
 import Ember from 'ember';
+import BaseRoute from '../baseRoute';
 import Game from '../../models/Game';
 import constants from '../../common/constants';
 
-var GamesShowRoute = Ember.Route.extend({
+var GamesShowRoute = BaseRoute.extend({
 	renderTemplate: function () {
-    this.render('headerLeft', { 
-      view: 'headerLeft', 
-      outlet: 'headerLeft', 
-      into: 'application',
-      controller: this.controllerFor('headerLeft')
-    });
-		this.render('headerRight', { 
-      view: 'headerRight', 
-      outlet: 'headerRight', 
-      into: 'application',
-      controller: this.controllerFor('headerRight')
-    });
+    this._super();
     this.render('gamesShow', {
       view: 'gamesShow',
       into: 'application',
