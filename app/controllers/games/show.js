@@ -26,7 +26,7 @@ var GameShowController = Ember.ObjectController.extend({
       loggedInPlayerRelId = this.get('loggedInPlayerRelId');
 
     return this.get('gameStatus') !== 'open' && loggedInPlayerRelId && (ruleBundleName === 'TicTacToe' || 
-      ruleBundleName === 'MuleSprawl' || ruleBundleName === 'Backgammon');
+      ruleBundleName === 'MuleSprawl' || ruleBundleName === 'Backgammon' || ruleBundleName === 'ConnectX');
   }.property('gameStatus', 'ruleBundle', 'loggedInPlayerRelId'),
 
   canJoinGame: function () {
@@ -41,6 +41,7 @@ var GameShowController = Ember.ObjectController.extend({
     var ruleBundleName = this.get('ruleBundle').name,
       id = this.get('_id'),
       ruleBundleUrlSwitchObject = {
+        'ConnectX': 'connectx/?gameID='+ id + '&playerRel=' + currentPlayerRel,
         'TicTacToe': "tictactoe/?gameID="+id + '&playerRel=' + currentPlayerRel,
         'MuleSprawl': "mulesprawl/?gameID="+id,
         'Backgammon': "backgammon/?gameID="+id + '&playerRel=' + currentPlayerRel
