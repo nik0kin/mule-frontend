@@ -125,7 +125,7 @@ var Game = Ember.Object.extend({
     _.each(this.get('players'), function (player, playerRel) {
       var pa = {
         relId: playerRel,
-        id: player.playerID,
+        id: player.playerId,
         status: player.playerStatus,
       };
       array.push(pa);

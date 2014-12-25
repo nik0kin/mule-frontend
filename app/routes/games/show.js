@@ -40,7 +40,7 @@ var GamesShowRoute = BaseRoute.extend({
             return;
           }
 
-          alert('you joined gameID[' + data.gameID + ']');
+          alert('you joined gameId[' + data.gameId + ']');
           console.log(this);
           that.refresh();
 

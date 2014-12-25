@@ -13,7 +13,7 @@ var GameShowController = Ember.ObjectController.extend({
 
     // try to find a matching userId
     _.each(this.get('players'), function (playerInfo, playerRel) {
-      if (playerInfo.playerID === currentUserId) {
+      if (playerInfo.playerId === currentUserId) {
         currentPlayerRel = playerRel;
       }
     });
@@ -41,17 +41,17 @@ var GameShowController = Ember.ObjectController.extend({
     var ruleBundleName = this.get('ruleBundle').name,
       id = this.get('_id'),
       ruleBundleUrlSwitchObject = {
-        'ConnectX': 'connectx/?gameID='+ id + '&playerRel=' + currentPlayerRel,
-        'TicTacToe': "tictactoe/?gameID="+id + '&playerRel=' + currentPlayerRel,
-        'MuleSprawl': "mulesprawl/?gameID="+id,
-        'Backgammon': "backgammon/?gameID="+id + '&playerRel=' + currentPlayerRel
+        'ConnectX': 'connectx/?gameId='+ id + '&playerRel=' + currentPlayerRel,
+        'TicTacToe': "tictactoe/?gameId="+id + '&playerRel=' + currentPlayerRel,
+        'MuleSprawl': "mulesprawl/?gameId="+id,
+        'Backgammon': "backgammon/?gameId="+id + '&playerRel=' + currentPlayerRel
       },
       url = ruleBundleUrlSwitchObject[ruleBundleName];
 
     return baseUrl + '/' + url; 
   }.property('_id', 'ruleBundle', 'loggedInPlayerRelId'),
   boardViewUrl: function () {
-    return baseUrl + '/board.html?gameID=' + this.get('_id'); 
+    return baseUrl + '/board.html?gameId=' + this.get('_id'); 
   }.property('_id')
 });
 

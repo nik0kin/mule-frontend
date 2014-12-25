@@ -59,7 +59,7 @@ var HeaderRightController = Ember.Controller.extend({
 
   loginSuccess: function(data) {
     this.set('loggedIn', true);
-    this.set('loggedInUserId', data.userID);
+    this.set('loggedInUserId', data.userId);
     this.set('loggedInUsername', data.username);
     this.reset();
     this.transitionToRoute('games.my');

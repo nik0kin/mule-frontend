@@ -30,7 +30,7 @@ var MyGamesRoute = BaseRoute.extend({
         var userInGame = false;
 
         _.each(game.players, function (player) {
-          if (player.playerID === loggedInUserId) {
+          if (player.playerId === loggedInUserId) {
             userInGame = true;
           }
         });
