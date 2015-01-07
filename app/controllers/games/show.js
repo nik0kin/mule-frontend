@@ -44,7 +44,7 @@ var GameShowController = Ember.ObjectController.extend({
         'ConnectX': 'connectx/?gameId='+ id + '&playerRel=' + currentPlayerRel,
         'TicTacToe': "tictactoe/?gameId="+id + '&playerRel=' + currentPlayerRel,
         'MuleSprawl': "mulesprawl/?gameId="+id,
-        'Backgammon': "backgammon/?gameId="+id + '&playerRel=' + currentPlayerRel
+        'Backgammon': 'backgammon/?gameId=' + id
       },
       url = ruleBundleUrlSwitchObject[ruleBundleName];
 
