@@ -7,15 +7,9 @@ var RSVP = Ember.RSVP;
 
 var Game = Ember.Object.extend({
   history: null,
-  isGameStatusOpen: function () {
-    return this.get('gameStatus') === 'open';
-  }.property('gameStatus'),
-  isGameStatusInProgress: function () {
-    return this.get('gameStatus') === 'inProgress';
-  }.property('gameStatus'),
-  isAutoProgress: function () {
-    return this.get('turnProgressStyle') === 'autoprogress';
-  }.property('turnProgressStyle'),
+  isGameStatusOpen: Ember.computed.equal('gameStatus', 'open'),
+  isGameStatusInProgress: Ember.computed.equal('gameStatus', 'inProgress'),
+  isAutoProgress: Ember.computed.equal('turnProgressStyle', 'autoprogress'),
 
   ////////PLAYER STUFF/////////
   playersCount: function () {
