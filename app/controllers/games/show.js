@@ -1,7 +1,8 @@
 /*global _ */
 import Ember from 'ember';
 
-var baseUrl = '../../webservices/public';
+var publicUrl = '../../webservices/public',
+  staticUrl = '../../webservices/static';
 
 var GameShowController = Ember.ObjectController.extend({
   needs: 'headerRight',
@@ -41,17 +42,17 @@ var GameShowController = Ember.ObjectController.extend({
     var ruleBundleName = this.get('ruleBundle').name,
       id = this.get('_id'),
       ruleBundleUrlSwitchObject = {
-        'ConnectX': 'connectx/?gameId='+ id + '&playerRel=' + currentPlayerRel,
-        'TicTacToe': "tictactoe/?gameId="+id + '&playerRel=' + currentPlayerRel,
+        'ConnectX': 'connectx/?gameId='+ id,
+        'TicTacToe': "tictactoe/?gameId="+id,
         'MuleSprawl': "mulesprawl/?gameId="+id,
         'Backgammon': 'backgammon/?gameId=' + id
       },
       url = ruleBundleUrlSwitchObject[ruleBundleName];
 
-    return baseUrl + '/' + url; 
+    return staticUrl + '/' + url; 
   }.property('_id', 'ruleBundle', 'loggedInPlayerRelId'),
   boardViewUrl: function () {
-    return baseUrl + '/board.html?gameId=' + this.get('_id'); 
+    return publicUrl + '/board.html?gameId=' + this.get('_id'); 
   }.property('_id')
 });
 
