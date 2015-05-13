@@ -37,7 +37,7 @@ var MyGamesRoute = BaseRoute.extend({
 
         return userInGame;
       });
-console.log(myGames)
+
       that.controllerFor('games').set('content', myGames);
 
       var getHistorysQ = function (_games) {

@@ -4,6 +4,8 @@ import Ember from 'ember';
 var publicUrl = '../../webservices/public',
   staticUrl = '../../webservices/static';
 
+var playableGames = ['TicTacToe', 'MuleSprawl', 'Backgammon', 'ConnectX', 'Vikings'];
+
 var GameShowController = Ember.ObjectController.extend({
   needs: 'headerRight',
 
@@ -26,9 +28,7 @@ var GameShowController = Ember.ObjectController.extend({
     var ruleBundleName = this.get('ruleBundle.name'),
       loggedInPlayerRelId = this.get('loggedInPlayerRelId');
 
-    return this.get('gameStatus') !== 'open' && loggedInPlayerRelId && (ruleBundleName === 'TicTacToe' || 
-      ruleBundleName === 'MuleSprawl' || ruleBundleName === 'Backgammon' || ruleBundleName === 'ConnectX'
-      || ruleBundleName === 'Vikings');
+    return this.get('gameStatus') !== 'open' && loggedInPlayerRelId && _.contains(playableGames, ruleBundleName);
   }.property('gameStatus', 'ruleBundle', 'loggedInPlayerRelId'),
 
   canJoinGame: function () {
@@ -38,7 +38,7 @@ var GameShowController = Ember.ObjectController.extend({
   playGameUrl: function () {
     if (!this.get('ruleBundle')) { return ''; }
 
-    var currentPlayerRel = this.get('loggedInPlayerRelId');
+    //var currentPlayerRel = this.get('loggedInPlayerRelId');
 
     var ruleBundleName = this.get('ruleBundle').name,
       id = this.get('_id'),
