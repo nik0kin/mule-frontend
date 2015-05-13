@@ -21,7 +21,7 @@ var GamesShowRoute = BaseRoute.extend({
     Game.findQ(model._id).then(function (game) {
       controller.set('content', game);
     })
-      .fail(function () {
+      .catch(function () {
         console.log('404 Game, redirecting');
         that.transitionTo('games');
       });
@@ -44,7 +44,7 @@ var GamesShowRoute = BaseRoute.extend({
           console.log(this);
           that.refresh();
 
-        }).fail(function(msg){
+        }).catch(function(msg){
           alert("JoinGame Fail Response:" + JSON.stringify(msg));
         });
     }

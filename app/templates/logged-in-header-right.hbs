@@ -1,4 +1,4 @@
-<h3> Hello {{loggedInUsername}} </h3>		
+<h3> Hello {{model.loggedInUsername}} </h3>		
 {{#link-to 'users'}}Your Profile{{/link-to}} ||
 <a href="#" {{action "logout" on="click"}}> Log Out </a><br>
 

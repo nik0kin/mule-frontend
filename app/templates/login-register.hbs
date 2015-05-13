@@ -5,7 +5,7 @@
 	    </div>
 
 	    <div class="controls">
-	        {{input value=username type="text"}}
+	        {{input value=model.username type="text"}}
 	    </div>
 	</div>
 
@@ -15,7 +15,7 @@
 	    </div>
 
 	    <div class="controls">
-	        {{input value=password type="password"}}
+	        {{input value=model.password type="password"}}
 	    </div>
 	</div>
 
@@ -26,12 +26,12 @@
 	  Register
 	</button>
 
-	{{#if loginFailed}}
+	{{#if model.loginFailed}}
 	<div class="alert alert-danger" role="alert">
 		<strong> Login Failed </strong>
 	</div>
 	{{/if}}
-	{{#if isSlowConnection}}
+	{{#if model.isSlowConnection}}
     	<div class="alert alert-info">The request seems to be taking more time than usual, please wait.</div>
 	{{/if}}
 </form>

@@ -6,7 +6,7 @@ var publicUrl = '../../webservices/public',
 
 var playableGames = ['TicTacToe', 'MuleSprawl', 'Backgammon', 'ConnectX', 'Vikings'];
 
-var GameShowController = Ember.ObjectController.extend({
+var GameShowController = Ember.Controller.extend({
   needs: 'headerRight',
 
   loggedInUserId: Ember.computed.alias('controllers.headerRight.loggedInUserId'),

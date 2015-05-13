@@ -1,5 +1,5 @@
 import Ember from 'ember';
 
-var UsersController = Ember.ObjectController.extend();
+var UsersController = Ember.Controller.extend();
 
 export default UsersController;
