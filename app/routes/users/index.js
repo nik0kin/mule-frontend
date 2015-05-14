@@ -17,7 +17,7 @@ var UsersRoute = BaseRoute.extend({
   },
   
   setupController: function() {
-    this.controllerFor('users').set('content', this.currentModel);
+    this.controllerFor('users').set('model', this.currentModel);
     this.controllerFor('headerRight').set('content', Ember.A({}));
   }
 });

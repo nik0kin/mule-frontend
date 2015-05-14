@@ -15,33 +15,33 @@ var GameShowController = Ember.Controller.extend({
       currentPlayerRel;
 
     // try to find a matching userId
-    _.each(this.get('players'), function (playerInfo, playerRel) {
+    _.each(this.get('model.players'), function (playerInfo, playerRel) {
       if (playerInfo.playerId === currentUserId) {
         currentPlayerRel = playerRel;
       }
     });
     console.log('pRel: ' + currentPlayerRel);
     return currentPlayerRel;
-  }.property('players', 'loggedInUserId'),
+  }.property('model.players', 'loggedInUserId'),
 
   canPlayGame: function () {
-    var ruleBundleName = this.get('ruleBundle.name'),
+    var ruleBundleName = this.get('model.ruleBundle.name'),
       loggedInPlayerRelId = this.get('loggedInPlayerRelId');
 
-    return this.get('gameStatus') !== 'open' && loggedInPlayerRelId && _.contains(playableGames, ruleBundleName);
-  }.property('gameStatus', 'ruleBundle', 'loggedInPlayerRelId'),
+    return this.get('model.gameStatus') !== 'open' && loggedInPlayerRelId && _.contains(playableGames, ruleBundleName);
+  }.property('model.gameStatus', 'model.ruleBundle', 'loggedInPlayerRelId'),
 
   canJoinGame: function () {
-    return this.get('gameStatus') === 'open' && !this.get('loggedInPlayerRelId') && this.get('loggedInUserId');
-  }.property('gameStatus', 'loggedInUserId', 'loggedInPlayerRelId'),
+    return this.get('model.gameStatus') === 'open' && !this.get('loggedInPlayerRelId') && this.get('loggedInUserId');
+  }.property('model.gameStatus', 'loggedInUserId', 'loggedInPlayerRelId'),
 
   playGameUrl: function () {
-    if (!this.get('ruleBundle')) { return ''; }
+    if (!this.get('model.ruleBundle')) { return ''; }
 
     //var currentPlayerRel = this.get('loggedInPlayerRelId');
 
-    var ruleBundleName = this.get('ruleBundle').name,
-      id = this.get('_id'),
+    var ruleBundleName = this.get('model.ruleBundle').name,
+      id = this.get('model._id'),
       ruleBundleUrlSwitchObject = {
         'Vikings': 'vikings/?gameId=' + id,
         'ConnectX': 'connectx/?gameId='+ id,
@@ -52,10 +52,10 @@ var GameShowController = Ember.Controller.extend({
       url = ruleBundleUrlSwitchObject[ruleBundleName];
 
     return staticUrl + '/' + url; 
-  }.property('_id', 'ruleBundle', 'loggedInPlayerRelId'),
+  }.property('model._id', 'model.ruleBundle', 'loggedInPlayerRelId'),
   boardViewUrl: function () {
-    return publicUrl + '/board.html?gameId=' + this.get('_id'); 
-  }.property('_id')
+    return publicUrl + '/board.html?gameId=' + this.get('model._id');
+  }.property('model._id')
 });
 
 export default GameShowController;

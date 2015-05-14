@@ -13,13 +13,9 @@ var GamesShowRoute = BaseRoute.extend({
     });
 	},
   setupController: function(controller, model) {
-    console.log('set it up');
-    console.log(controller);
-    console.log(model);
-
     var that = this;
     Game.findQ(model._id).then(function (game) {
-      controller.set('content', game);
+      controller.set('model', game);
     })
       .catch(function () {
         console.log('404 Game, redirecting');

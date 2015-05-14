@@ -1,29 +1,29 @@
-{{#link-to 'games.show' _id}}
+{{#link-to 'games.show' model._id}}
 <div class="border">
 	<div class="row">
 		<div class="col-md-3">
-			name: <h3>{{name}}</h3>
-			Players:  {{playersCount}}/{{maxPlayers}}
+			name: <h3>{{model.name}}</h3>
+			Players:  {{model.playersCount}}/{{model.maxPlayers}}
 		</div>
 		<div class="col-md-4">
-			<FONT {{bind-attr color="statusColor"}}><h3><b>{{statusMsg}}</b></h3></FONT>
-			{{#if history.currentRound}} Round: <b>{{history.currentRound}} </b> <br> {{/if}}
+			<FONT {{bind-attr color="model.statusColor"}}><h3><b>{{model.statusMsg}}</b></h3></FONT>
+			{{#if model.history.currentRound}} Round: <b>{{model.history.currentRound}} </b> <br> {{/if}}
 			<br>
-			TurnProgressStyle: {{turnProgressStyle}} <br>
-			{{#if isAutoProgress}}
-				TurnTimeLimit: {{turnTimeLimit}} seconds<br>
-				{{#if isGameStatusInProgress}} NextTurnTime: {{nextTurnTime}} {{/if}}
+			TurnProgressStyle: {{model.turnProgressStyle}} <br>
+			{{#if model.isAutoProgress}}
+				TurnTimeLimit: {{model.turnTimeLimit}} seconds<br>
+				{{#if model.isGameStatusInProgress}} NextTurnTime: {{model.nextTurnTime}} {{/if}}
 			{{/if}}
 			<br>
-			{{#if whosTurnUsernameDisplay}}
-				Whos Turn: <b>{{whosTurnUsernameDisplay}}</b>
+			{{#if model.whosTurnUsernameDisplay}}
+				Whos Turn: <b>{{model.whosTurnUsernameDisplay}}</b>
 			{{/if}}
 		</div>
 		<div class="col-md-4">
-			RuleBundle: <b>{{ruleBundle.name}}</b> 
-			<img {{bind-attr src=ruleBundleIconFile}}> <br>
+			RuleBundle: <b>{{model.ruleBundle.name}}</b>
+			<img {{bind-attr src=model.ruleBundleIconFile}}> <br>
 			RuleBundle GameSettings: <br>
-				{{jsonToString ruleBundleGameSettings}}
+				{{jsonToString model.ruleBundleGameSettings}}
 		</div>
 	</div>
 </div>
