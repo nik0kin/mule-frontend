@@ -24,18 +24,30 @@
 	</div>
 </nav>
 
-<div class="container"> 
-<div class="border row">
-    <div class="col-sm-8 border">
+<div class="header-bar row">
+    <div class="left-header col-sm-8">
 		{{outlet "headerLeft"}}
     </div>
-    <div class="col-sm-4 border">
+    <div class="right-header col-sm-4">
 		{{outlet "headerRight"}}
     </div>
 </div>
-<br>
-<div class="border">
-	{{outlet}}
-</div>
-{{outlet "modal"}}
+
+
+<div class="container">
+	<div class="games-nav">
+		<span> GAMES </span>
+		<ul>
+			<li> {{#link-to 'games.my'}} /my {{/link-to}} </li>
+			<li> {{#link-to 'games.open'}} /open {{/link-to}}</li>
+			<li> /create </li>
+		</ul>
+	</div>
+
+	<hr>
+
+	<div class="border">
+		{{outlet}}
+	</div>
+	{{outlet "modal"}}
 </div>
