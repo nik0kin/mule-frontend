@@ -40,7 +40,7 @@ var GamesShowRoute = BaseRoute.extend({
           console.log(this);
           that.refresh();
 
-        }).catch(function(msg){
+        }).fail(function(msg){
           alert("JoinGame Fail Response:" + JSON.stringify(msg));
         });
     }
