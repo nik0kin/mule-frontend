@@ -4,7 +4,7 @@ import Ember from 'ember';
 var publicUrl = '../../webservices/public',
   staticUrl = '../../webservices/static';
 
-var playableGames = ['TicTacToe', 'MuleSprawl', 'Backgammon', 'ConnectX', 'Vikings'];
+var playableGames = ['TicTacToe', 'MuleSprawl', 'Backgammon', 'Battleship', 'ConnectX', 'Vikings'];
 
 var GameShowController = Ember.Controller.extend({
   needs: 'headerRight',
@@ -47,11 +47,12 @@ var GameShowController = Ember.Controller.extend({
         'ConnectX': 'connectx/?gameId='+ id,
         'TicTacToe': "tictactoe/?gameId="+id,
         'MuleSprawl': "mulesprawl/?gameId="+id,
-        'Backgammon': 'backgammon/?gameId=' + id
+        'Backgammon': 'backgammon/?gameId=' + id,
+        'Battleship': 'battleship/?gameId=' + id
       },
       url = ruleBundleUrlSwitchObject[ruleBundleName];
 
-    return staticUrl + '/' + url; 
+    return staticUrl + '/' + url;
   }.property('model._id', 'model.ruleBundle', 'loggedInPlayerRelId'),
   boardViewUrl: function () {
     return publicUrl + '/board.html?gameId=' + this.get('model._id');
