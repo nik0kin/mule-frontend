@@ -36,7 +36,7 @@
 			<div class="game-lobby-name"> {{ game.model.name }} </div>
 		</div>
 		<div class="number-of-players"> {{ game.model.playersCount }}/{{ game.model.maxPlayers }} </div>
-		<div class="status-message">
+		<div class="game-lobby-link-message">
 			{{#link-to 'games.show' game.model._id}}
 				Join Game Now! &raquo;
 			{{/link-to}}
@@ -48,9 +48,9 @@
 				<tr>
 					<td>
 						<span class="more-label"> Game Id</span>
-						<span> 54316a985fd6 </span>
+						<span class="game-id"> {{ game.model._id }} </span>
 					</td>
-					<td>
+					<td class="col2">
 						<span class="more-label"> Kick Timer </span>
 						<span> N/A </span>
 					</td>
@@ -58,23 +58,29 @@
 				<tr>
 					<td>
 						<span class="more-label"> Status </span>
-						<span> In Progress </span>
+						<span> {{ game.model.statusMsg }}</span>
 					</td>
-					<td>
-						<span class="more-label"> Players </span>
-						<span>
-							<ul>
-								<li> Nadia </li>
-								<li> Nimbus </li>
-								<li> Nova </li>
-							</ul>
-						</span>
+					<td rowspan="2" class="col2">
+						<div class="players-container">
+							<span class="more-label"> Players </span>
+							<span>
+								<ul>
+									{{#each player in game.model.playersArray}}
+										<li> {{ player.username }} </li>
+									{{/each}}
+								</ul>
+							</span>
+						</div>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<span class="more-label"> Round </span>
-						<span> 7 </span>
+						<span>
+							{{#if game.model.history.currentRound}}
+								{{ game.model.history.currentRound }}
+							{{/if}}
+						</span>
 					</td>
 				</tr>
 			</tbody>
