@@ -1,0 +1,69 @@
+.game-info {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  cursor: pointer; // for indicating clicking will toggle collapse
+
+  @media (max-width: 768px)  {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .quick-info {
+    max-width: @content-max-width;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .bubble-container {
+      padding: 10px;
+      margin-right: 10px;
+      .bubble {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #888888;
+      }
+    }
+
+    .name-container {
+      .rule-bundle-name {
+        font-size: .7em;
+        font-weight: bold;
+        color: #cccccc;
+        text-transform: uppercase;
+      }
+      .game-lobby-name {
+        padding-bottom: .7em;
+        font-size: 1.4em;
+        font-weight: bold;
+      }
+    }
+
+    .number-of-players {
+      color: #888888;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    .status-message {
+      color: #bbbbbb;
+      font-style: italic;
+    }
+  }
+
+  .more-info {
+    max-width: @content-max-width;
+  }
+
+  .more-info.collapsed {
+    display: none;
+  }
+}
+
+.game-info.selected-highlight {
+  background-color: #F9F9F9;
+}

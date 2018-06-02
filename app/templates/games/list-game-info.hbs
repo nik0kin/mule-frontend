@@ -1,6 +1,6 @@
-{{#link-to 'games.show' model._id}}
-<div class="border">
-	<div class="row">
+<div {{bind-attr class=":game-info game.isCollapsed:collapsed:selected-highlight"}} {{action 'toggleCollapsed'}}>
+	<!--
+	<div class="row old">
 		<div class="col-md-3">
 			name: <h3>{{model.name}}</h3>
 			Players:  {{model.playersCount}}/{{model.maxPlayers}}
@@ -26,6 +26,58 @@
 				{{jsonToString model.ruleBundleGameSettings}}
 		</div>
 	</div>
+	-->
+	<div class="quick-info">
+		<div class="bubble-container">
+			<div class="bubble"></div>
+		</div>
+		<div class="name-container">
+			<div class="rule-bundle-name"> {{ game.model.ruleBundle.name }} </div>
+			<div class="game-lobby-name"> {{ game.model.name }} </div>
+		</div>
+		<div class="number-of-players"> {{ game.model.playersCount }}/{{ game.model.maxPlayers }} </div>
+		<div class="status-message">
+			{{#link-to 'games.show' game.model._id}}
+				Join Game Now! &raquo;
+			{{/link-to}}
+		</div>
+	</div>
+	<div {{bind-attr class=":more-info game.isCollapsed:collapsed"}}>
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						<span class="more-label"> Game Id</span>
+						<span> 54316a985fd6 </span>
+					</td>
+					<td>
+						<span class="more-label"> Kick Timer </span>
+						<span> N/A </span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="more-label"> Status </span>
+						<span> In Progress </span>
+					</td>
+					<td>
+						<span class="more-label"> Players </span>
+						<span>
+							<ul>
+								<li> Nadia </li>
+								<li> Nimbus </li>
+								<li> Nova </li>
+							</ul>
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="more-label"> Round </span>
+						<span> 7 </span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
-{{/link-to}}
-<br>

@@ -9,6 +9,15 @@ var playableGames = ['TicTacToe', 'MuleSprawl', 'Backgammon', 'Battleship', 'Con
 var GameShowController = Ember.Controller.extend({
   needs: 'headerRight',
 
+  isCollapsed: true,
+
+  actions: {
+    toggleCollapsed: function() {
+      console.log('called', this.get('model._id'));
+      this.set('isCollapsed', !this.get('isCollapsed'));
+    }
+  },
+
   loggedInUserId: Ember.computed.alias('controllers.headerRight.loggedInUserId'),
   loggedInPlayerRelId: function () {
     var currentUserId = this.get('loggedInUserId'),

@@ -34,20 +34,23 @@
 </div>
 
 
-<div class="container">
-	<div class="games-nav">
-		<span> GAMES </span>
-		<ul>
-			<li> {{#link-to 'games.my'}} /my {{/link-to}} </li>
-			<li> {{#link-to 'games.open'}} /open {{/link-to}}</li>
-			<li> /create </li>
-		</ul>
+<div class="content-container">
+	<div class="games-nav-container">
+		<div class="games-nav">
+			<span> GAMES </span>
+			<ul>
+				<li> {{#link-to 'games.my'}} /my {{/link-to}} </li>
+				<li> {{#link-to 'games.open'}} /open {{/link-to}}</li>
+				<li> /create </li>
+			</ul>
+		</div>
+
+		<hr>
 	</div>
 
-	<hr>
-
-	<div class="border">
+	<div class="outlet">
 		{{outlet}}
 	</div>
+
 	{{outlet "modal"}}
 </div>

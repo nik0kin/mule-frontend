@@ -2,15 +2,18 @@
 
 @import "app/styles/variables.less";
 
+@import "app/styles/game-info.less";
+@import "app/styles/game-show.less";
+@import "app/styles/header.less";
 @import "app/styles/navbar.less";
 
-.container {
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 10px;
 }
 
-//html, body {
-//  margin: 20px;
-//}
 
 div .border{
     border:4px solid;
@@ -19,143 +22,45 @@ div .border{
     padding:5px 20px;
 }
 
-table {
-    width:80%;
-    border-collapse:collapse;
+.outlet {
+  width: 100%;
+  padding-top: 10px;
 }
 
-th {
-    color:#678197;
-    padding:.3em 1em;
-    text-align:left;
-    font-weight : bold;
-}
 
-td {
-    color:#678197;
-    padding:.3em 1em;
-    text-align:left;
-}
+.games-nav-container {
+  max-width: @content-max-width;
+  width: 100%;
 
-.header-bar {
-  background-image: url(banner.png);
-  background-size: 100% 300px;
-  //height: 300px; // NOT RESPONSIVE
+  .games-nav {
+    margin-top: 20px;
 
-  margin-top: 60px;
-
-  .left-header {
-    padding: 20px 20px 20px 20px;
     span {
-      margin-left: 20px;
+      font-size: 20px;
     }
-  }
-
-  .right-header {
-    padding: 20px 20px 20px 20px;
-  }
-
-  .big-text {
-    color: white;
-    font-size: 28px;
-    font-family: 'Source Sans Pro', serif;
-    font-weight: 600;
-  }
-
-  .small-text {
-    color: white;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-  }
-}
-
-.right-header {
-  button {
-    margin-top: 7px;
-    border: 0px;
-
-    font-family: 'Raleway', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    width: 100px;
-  }
-
-  #login-btn {
-    background-color: #5ad755;
-    color: #555555;
-  }
-
-  #register-btn {
-    background-color: #111111;
-    font-style: italic;
-  }
-
-  .logged-in {
-    padding-top: 30px;
-    padding-left: 30px;
-
-    .username {
-      color: white;
-      font-size: 24pt;
-    }
-
-    .right-of-username {
-      display: inline-block;
-      font-size: 8pt;
-    }
-  }
-}
-
-.input-form {
-  display: block;
-  width: 200px;
-  height: 32px;
-  padding: 6px 6px;
-
-
-  font-family: 'Source Sans Pro', serif;
-  font-weight: 500;
-  font-style: italic;
-  font-size: 16px;
-  line-height: 1.42857143;
-  color: #555555;
-
-  background-color: #ffffff;
-  background-image: none;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  margin-top: 7px;
-}
-
-.games-nav {
-  margin-top: 20px;
-
-  span {
-    font-size: 20px;
-  }
-  ul {
-    display:inline;
-    padding:none;
-    margin:none;
-
-    padding-left: 5px;
-
-    li {
-      margin-left: 10px;
-      margin-right: 10px;
-      display:inline-block;
-
+    ul {
+      display:inline;
       padding:none;
       margin:none;
 
-      list-style: none;
-      white-space: nowrap;
+      padding-left: 5px;
+
+      li {
+        margin-left: 10px;
+        margin-right: 10px;
+        display:inline-block;
+
+        padding:none;
+        margin:none;
+
+        list-style: none;
+        white-space: nowrap;
+      }
     }
   }
-}
 
-hr {
-  margin-top: 10px;
-  margin-bottom: 15px
+  hr {
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
 }
