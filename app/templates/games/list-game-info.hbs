@@ -36,9 +36,9 @@
 			<div class="game-lobby-name"> {{ game.model.name }} </div>
 		</div>
 		<div class="number-of-players"> {{ game.model.playersCount }}/{{ game.model.maxPlayers }} </div>
-		<div class="game-lobby-link-message">
+		<div class="game-lobby-link-message {{ game.model.gameStatus }}">
 			{{#link-to 'games.show' game.model._id}}
-				Join Game Now! &raquo;
+				{{ game.lobbyLinkMessage }} &raquo;
 			{{/link-to}}
 		</div>
 	</div>

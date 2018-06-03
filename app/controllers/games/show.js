@@ -44,6 +44,20 @@ var GameShowController = Ember.Controller.extend({
     return this.get('model.gameStatus') === 'open' && !this.get('loggedInPlayerRelId') && this.get('loggedInUserId');
   }.property('model.gameStatus', 'loggedInUserId', 'loggedInPlayerRelId'),
 
+  lobbyLinkMessage: function () {
+    var gameStatus = this.get('model.gameStatus');
+    switch (gameStatus) {
+      case 'open':
+        return 'Join Game Now!';
+      case 'inProgress':
+        return 'Last played MM/DD/YY';
+      case 'finished':
+        return 'Game Over';
+      default:
+        return 'weirdStatus: ' + gameStatus;
+    }
+  }.property('model.gameStatus'),
+
   playGameUrl: function () {
     if (!this.get('model.ruleBundle')) { return ''; }
 
