@@ -4,7 +4,15 @@ import Ember from 'ember';
 var publicUrl = '../../webservices/public',
   staticUrl = '../../webservices/static';
 
-var playableGames = ['TicTacToe', 'MuleSprawl', 'Backgammon', 'Battleship', 'ConnectX', 'Vikings'];
+var playableGames = [
+  'TicTacToe',
+  'Lords of Sprawlville',
+  'MuleSprawl',
+  'Backgammon',
+  'Battleship',
+  'ConnectX',
+  'Vikings'
+];
 
 var GameShowController = Ember.Controller.extend({
   needs: 'headerRight',
@@ -69,6 +77,7 @@ var GameShowController = Ember.Controller.extend({
         'Vikings': 'vikings/?gameId=' + id,
         'ConnectX': 'connectx/?gameId='+ id,
         'TicTacToe': "tictactoe/?gameId="+id,
+        'Lords of Sprawlville': "lords-of-sprawlville/?gameId="+id,
         'MuleSprawl': "mulesprawl/?gameId="+id,
         'Backgammon': 'backgammon/?gameId=' + id,
         'Battleship': 'battleship/?gameId=' + id
