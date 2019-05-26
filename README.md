@@ -17,13 +17,14 @@ You will need the following things properly installed on your computer.
 
 * `git clone <repository-url>` this repository
 * change into the new directory
+* `nvm use lts/argon`
 * `npm install`
-* `bower install`
+* `npm run setup`
 
 ## Running / Development
 
 * `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+* Visit your app at [http://localhost:4313](http://localhost:4313).
 
 ### Code Generators
 
